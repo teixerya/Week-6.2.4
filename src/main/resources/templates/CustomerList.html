@@ -12,20 +12,20 @@
 <body>
 <main>
     <h1>List All</h1>
-    <table th:unless="${#lists.isEmpty(customers)}">
+    <table th:unless="${#lists.isEmpty(countries)}">
         <tr>
             <th>Count</th>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
+            <th>Country</th>
             <th>Link "Details"</th>
         </tr>
-        <tr th:each="s,c: ${customers}">
+        <tr th:each="s,c: ${countries}">
             <td th:text="${c.count}">1</td>
 
-            <td th:text="${s.firstName}">Bart</td>
-            <td th:text="${s.lastName}">Simpson</td>
+            <td th:text="${s.name}">Bart</td>
+            <td th:text="${s.continent}">Simpson</td>
             <td>
-                <a href="CustomerDetails.html" th:href="@{CustomerDetails/{customer_id}(customer_id=${s.customer_id})}">Details</a>
+                <a href="CustomerDetails.html" th:href="@{CustomerDetails/{id}(id=${s.id})}">Details</a>
 
             </td>
         </tr>
@@ -41,7 +41,7 @@
         </tr>
         <!--*/-->
     </table>
-    <p class="message" th:if="${#lists.isEmpty(customers)}">No student data</p>
+    <p class="message" th:if="${#lists.isEmpty(countries)}">No student data</p>
 
 
 </main>

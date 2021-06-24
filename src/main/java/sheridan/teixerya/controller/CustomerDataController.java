@@ -33,20 +33,20 @@ public class CustomerDataController {
         logger.trace("customerList() is called");
         List<CustomerForm> list = customerDataService.getAllCustomerForms();
         return new ModelAndView("CustomerList",
-                "customers", list);
+                "countries", list);
     }
 
 
     @GetMapping("CustomerDetails/{id}")
-    public String customerDetails(@PathVariable String customer_id, Model model){
+    public String customerDetails(@PathVariable String id, Model model){
         logger.trace("customerDetails() is called");
         try {
-            CustomerForm form = customerDataService.getCustomerForm(Integer.parseInt(customer_id));
+            CustomerForm form = customerDataService.getCustomerForm(Integer.parseInt(id));
             if (form != null) {
-                model.addAttribute("customer", form);
+                model.addAttribute("country", form);
                 return "CustomerDetails"; // show the customer data in the form to edit
             } else {
-                logger.trace("no data for this id=" + customer_id);
+                logger.trace("no data for this id=" + id);
                 return "DataNotFound";
             }
         } catch (NumberFormatException e) {
@@ -57,5 +57,6 @@ public class CustomerDataController {
 
 
 }
+
 
 

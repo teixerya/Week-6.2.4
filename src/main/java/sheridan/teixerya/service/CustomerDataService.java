@@ -11,7 +11,7 @@ public interface CustomerDataService {
 
     List<CustomerForm> getAllCustomerForms();
 
-    CustomerForm getCustomerForm(int customer_id);
+    CustomerForm getCustomerForm(int id);
 
 
 }

@@ -15,36 +15,28 @@
 <body>
 <main>
     <h1>Customer Details</h1>
-    <div th:object="${customer}">
+    <div th:object="${country}">
         <p>
-            <label class="group_label">First Name:</label>
-            <span class="output" th:text="*{firstName}">Bart</span>
+            <label class="group_label">Country:</label>
+            <span class="output" th:text="*{name}">Canada </span>
         </p>
         <p>
-            <label class="group_label">Last Name:</label>
-            <span class="output" th:text="*{lastName}">Simpson</span>
+            <label class="group_label">Continent:</label>
+            <span class="output" th:text="*{continent}">North America</span>
         </p>
         <p>
-            <label class="group_label">Email:</label>
-            <span class="output" th:text="*{email}">Email</span>
+            <label class="group_label">Region:</label>
+            <span class="output" th:text="*{region}">Central</span>
         </p>
         <p>
-            <label class="group_label">Street:</label>
-            <span class="output" th:text="*{street}">Street</span>
+            <label class="group_label">Surface Area:</label>
+            <span class="output" th:text="*{surfaceArea}">100</span>
         </p>
         <p>
-            <label class="group_label">City:</label>
-            <span class="output" th:text="*{city}">City</span>
-        </p>
-        <p>
-            <label class="group_label">State:</label>
-            <span class="output" th:text="*{state}">State</span>
+            <label class="group_label">Population:</label>
+            <span class="output" th:text="*{population}">2700000</span>
         </p>
 
-        <p>
-            <label class="group_label">Zip Code:</label>
-            <span class="output" th:text="*{zipCode}">Zip code</span>
-        </p>
 
     </div>
 

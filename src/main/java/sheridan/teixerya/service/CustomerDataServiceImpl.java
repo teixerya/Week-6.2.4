@@ -22,26 +22,24 @@ public class CustomerDataServiceImpl implements CustomerDataService {
         this.customerDataRepository = customerDataRepository;
     }
 
-    private static void copyFormToEntity(CustomerForm form, CustomerEntity customer){
-        //customer.setCustomer_id(form.getCustomer_id());
-        customer.setFirstName(form.getFirstName());
-        customer.setLastName(form.getLastName());
-        customer.setEmail(form.getEmail());
-        customer.setStreet(form.getStreet());
-        customer.setCity(form.getCity());
-        customer.setState(form.getState());
-        customer.setZipCode(form.getZipCode());
+    private static void copyFormToEntity(CustomerForm form, CustomerEntity country){
+
+        country.setName(form.getName());
+        country.setContinent(form.getContinent());
+        country.setRegion(form.getRegion());
+        country.setSurfaceArea(form.getSurfaceArea());
+        country.setPopulation(form.getPopulation());
+
     }
 
-    private static void copyEntityToForm(CustomerEntity customer, CustomerForm form){
-        form.setCustomer_id(customer.getId());
-        form.setFirstName(customer.getFirstName());
-        form.setLastName(customer.getLastName());
-        form.setEmail(customer.getEmail());
-        form.setStreet(customer.getStreet());
-        form.setCity(customer.getCity());
-        form.setState(customer.getState());
-        form.setZipCode(customer.getZipCode());
+    private static void copyEntityToForm(CustomerEntity country, CustomerForm form){
+        form.setId(country.getId());
+        form.setName(country.getName());
+        form.setContinent(country.getContinent());
+        form.setRegion(country.getRegion());
+        form.setSurfaceArea(country.getSurfaceArea());
+        form.setPopulation(country.getPopulation());
+
     }
 
 
@@ -49,9 +47,9 @@ public class CustomerDataServiceImpl implements CustomerDataService {
     public List<CustomerForm> getAllCustomerForms() {
         List<CustomerForm> formList = new ArrayList<>();
         List<CustomerEntity> customerList = customerDataRepository.findAll();
-        for(CustomerEntity customer: customerList){
+        for(CustomerEntity country: customerList){
             CustomerForm form = new CustomerForm();
-            copyEntityToForm(customer, form);
+            copyEntityToForm(country, form);
             formList.add(form);
         }
         return formList;
@@ -59,12 +57,12 @@ public class CustomerDataServiceImpl implements CustomerDataService {
 
 
 
-    public CustomerForm getCustomerForm(int customer_id) {
-        Optional<CustomerEntity> result = customerDataRepository.findById(customer_id);
+    public CustomerForm getCustomerForm(int id) {
+        Optional<CustomerEntity> result = customerDataRepository.findById(id);
         if(result.isPresent()){
             CustomerForm form = new CustomerForm();
-            CustomerEntity customer = result.get();
-            copyEntityToForm(customer, form);
+            CustomerEntity country = result.get();
+            copyEntityToForm(country, form);
             return form;
         }
         return null;
@@ -73,5 +71,6 @@ public class CustomerDataServiceImpl implements CustomerDataService {
 
 
 }
+
 
 

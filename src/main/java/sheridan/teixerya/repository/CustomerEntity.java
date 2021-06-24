@@ -30,6 +30,7 @@ public class CustomerEntity implements Serializable {
 
     public CustomerEntity(){};
 
+
     public Integer getId() {
         return id;
     }
