@@ -28,23 +28,23 @@ public class CustomerDataController {
         this.customerDataService = customerDataService;
     }
 
-    @GetMapping(value={"/", "/CustomerList"})
-    public ModelAndView customerList() {
-        logger.trace("customerList() is called");
+    @GetMapping(value={"/", "/CountryList"})
+    public ModelAndView CountryList() {
+        logger.trace("CountryList() is called");
         List<CustomerForm> list = customerDataService.getAllCustomerForms();
-        return new ModelAndView("CustomerList",
+        return new ModelAndView("CountryList",
                 "countries", list);
     }
 
 
-    @GetMapping("CustomerDetails/{id}")
-    public String customerDetails(@PathVariable String id, Model model){
-        logger.trace("customerDetails() is called");
+    @GetMapping("CountryDetails/{id}")
+    public String CountryDetails(@PathVariable String id, Model model){
+        logger.trace("CountryDetails() is called");
         try {
             CustomerForm form = customerDataService.getCustomerForm(Integer.parseInt(id));
             if (form != null) {
                 model.addAttribute("country", form);
-                return "CustomerDetails"; // show the customer data in the form to edit
+                return "CountryDetails"; // show the customer data in the form to edit
             } else {
                 logger.trace("no data for this id=" + id);
                 return "DataNotFound";
@@ -57,6 +57,7 @@ public class CustomerDataController {
 
 
 }
+
 
 
 
